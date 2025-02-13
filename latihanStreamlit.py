@@ -8,7 +8,7 @@ freight_value_products_category = pd.read_csv('https://raw.githubusercontent.com
 
 st.title('Analisis Dataset E-Commerce Public Dataset')
 
-farhanTab,idinTab,ikhsanTab,faishalTab= st.tabs(['Product & Payment Type', 'Review Score & Order Status', 'Review Score & Freight value', 'Most Expensive and Most Cheap Product'])
+homepageTab, farhanTab, idinTab, ikhsanTab, faishalTab = st.tabs(['Main Page', 'Product & Payment Type', 'Review Score & Order Status', 'Review Score & Freight value', 'Most Expensive and Most Cheap Product'])
 
 
 # Fungsi untuk menampilkan angka pada bar chart
@@ -26,6 +26,18 @@ def addNumbers(bars):
         va = 'bottom',
         color='black',
     )
+
+with homepageTab:
+    st.html(
+        "<p style='text-align: center; text-decoration: underline'>Team 5 Pemrograman Dasar Sains Data</p>"
+    )
+    col1, col2 = st.columns(2);
+    col1.image('./our-images/farhanPhoto.jpg', width=250)
+    col1.image('./our-images/agiPhoto.jpg', width=250)
+    col2.image('./our-images/ikhsanPhoto.jpg', width=250)
+    col1.image('./our-images/faishalPhoto.jpg', width=250)
+    col2.image('./our-images/idinPhoto.jpg', width=250)
+    col2.image('./our-images/rizqiPhoto.jpg', width=250)
 
 with farhanTab: 
     order_products_all_df = pd.read_csv('https://raw.githubusercontent.com/idin132/PDSD/refs/heads/master/main-data/order_products_all_df.csv');
@@ -69,6 +81,7 @@ with farhanTab:
     bars = ax.bar(x, y, color=colors)
     addNumbers(bars)
 
+    ax.set_title('Produk dengan Pembelian Tertinggi')
     ax.set_xlabel('Produk')
     ax.set_ylabel('Jumlah Beli')
     plt.xticks(rotation=30)
@@ -88,6 +101,7 @@ with farhanTab:
     bars = ax1.bar(x, y, color=colors)
     addNumbers(bars)
 
+    ax1.set_title('3 Produk dengan Pembelian Tertinggi')
     ax1.set_xlabel('Produk')
     ax1.set_ylabel('Jumlah Beli')
     plt.xticks(rotation=30)
